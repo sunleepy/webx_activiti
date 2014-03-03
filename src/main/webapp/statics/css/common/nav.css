@@ -1,0 +1,58 @@
+.ns_aliworkbpms .nav {
+	height: 36px;
+	padding: 10px;
+}
+
+.ns_aliworkbpms .nav .logo {
+	float: left;
+	background-color: transparent;
+	background-image:
+		url("https://s.tbcdn.cn/g/platform/nw/1.2.11/img/base/logo-new.png");
+	background-repeat: no-repeat;
+	width: 146px;
+	height: 36px;
+}
+
+.ns_aliworkbpms .nav .menu {
+	float: left;
+	widht: 90%;
+	padding-left: 60px;
+}
+
+.ns_aliworkbpms .nav .menu ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.ns_aliworkbpms .nav .menu ul li {
+	margin-left: 10px;
+	float: left;
+	background:#dddddd;
+	text-align: center;
+	border: 0px solid black;
+	float: left;
+	list-style: none;
+}
+
+.ns_aliworkbpms .nav .menu ul li a {
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	display: block;
+}
+
+.ns_aliworkbpms .nav .menu ul li a:link {
+	color:black;
+}
+
+.ns_aliworkbpms .nav .menu ul li a:visited {
+	color:black;
+}
+
+.ns_aliworkbpms .nav .menu ul li a:hover {
+	
+}
+
+.ns_aliworkbpms .nav .menu ul li.selected {
+	border: 1px solid red;
+}

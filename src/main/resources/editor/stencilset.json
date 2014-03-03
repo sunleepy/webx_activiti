@@ -1,0 +1,255 @@
+{
+        "title":"节点集合",
+        "namespace":"http://ibmp.alibaba-inc.com/stencilset/diagram#",
+        "description":"节点集合",
+        "propertyPackages" : [
+		  {
+		    "name" : "baseattributes",
+		    "properties" : [ {
+		      "id" : "name",
+		      "type" : "String",
+		      "title" : "名称",
+		      "value" : "",
+		      "description" : "描述元素名称",
+		      "popular" : true,
+		      "refToView" : "text_name"
+		    }, {
+		      "id" : "documentation",
+		      "type" : "Text",
+		      "title" : "描述",
+		      "value" : "",
+		      "description" : "描述名称",
+		      "popular" : true
+		    } ]
+		  },
+		      
+		      {
+    			"name" : "variableattributes",
+    			"properties" : [ {
+		      "id" : "variables",
+		      "type" : "Complex",
+		      "title" : "流程变量",
+		      "value" : "",
+		      "description" : "流程变量",
+		      "popular" : true,
+		      "complexItems" : [{
+		        "id" : "variable",
+		        "name" : "流程变量操作",
+		        "type" : "String",
+		        "description" : "流程变量操作",
+		        "value" : "",
+		        "width" : 200,
+		        "optional" : true
+		      } ]
+		    } ]
+		  },
+		   {
+		    "name" : "sequenceflowbase",
+		    "properties" : [ {
+		      "id" : "condition",
+		      "type" : "Text",
+		      "title" : "路由规则",
+		      "value" : "",
+		      "description" : "路由规则",
+		      "popular" : false
+		    }]
+		  },{
+		    "name" : "loopcharacteristics",
+		    "properties" : [ ]
+		  },{
+		  	"name": "humanattributes",
+		  	"properties" : [ {
+		      "id" : "taskTitle",
+		      "type" : "String",
+		      "title" : "任务标题",
+		      "value" : "",
+		      "description" : "任务标题",
+		      "popular" : true
+		    },{
+		      "id" : "taskUrl",
+		      "type" : "String",
+		      "title" : "任务执行地址",
+		      "value" : "",
+		      "description" : "任务执行地址",
+		      "popular" : true
+		    },{
+		      "id" : "actions",
+		      "type" : "Complex",
+		      "title" : "动作",
+		      "value" : "",
+		      "description" : "动作",
+		      "popular" : true,
+		      "complexItems" : [{
+		        "id" : "action",
+		        "name" : "动作",
+		        "type" : "String",
+		        "description" : "动作",
+		        "value" : "",
+		        "width" : 200,
+		        "optional" : true
+		      }]
+		    }]
+		  },{
+		  	"name": "humanextattributes",
+		  	"properties" : [ {
+		      "id" : "actionerRule",
+		      "type" : "Test",
+		      "title" : "执行人规则",
+		      "value" : "",
+		      "description" : "执行人规则",
+		      "popular" : false
+		    },{
+		      "id" : "finishRule",
+		      "type" : "Complex",
+		      "title" : "完成规则",
+		      "value" : "",
+		      "description" : "完成规则",
+		      "popular" : false,
+		      "complexItems" : [{
+		        "id" : "key",
+		        "name" : "完成键",
+		        "type" : "String",
+		        "description" : "完成键",
+		        "value" : "",
+		        "width" : 150,
+		        "optional" : true
+		      },{
+		        "id" : "value",
+		        "name" : "完成值",
+		        "type" : "String",
+		        "description" : "完成值",
+		        "value" : "",
+		        "width" : 200,
+		        "optional" : true
+		      }]
+		    }]
+		  },{
+		  	"name": "serverextattributes",
+		  	"properties" : [ {
+		      "id" : "serverActionRule",
+		      "type" : "Text",
+		      "title" : "执行内容规则",
+		      "value" : "",
+		      "description" : "执行内容规则",
+		      "popular" : false
+		    }]
+		  },{
+		  	"name": "globalextattributes",
+		  	"properties" : [ {
+		      "id" : "globalActionRule",
+		      "type" : "Text",
+		      "title" : "执行内容规则",
+		      "value" : "",
+		      "description" : "执行内容规则",
+		      "popular" : false
+		    }]
+		  }],
+         "stencils": [
+                {
+                        "type":         "node",
+                        "id":           "Diagram",
+                        "title":        "流程",      
+                        "groups":       ["Diagram"],
+                        "description":  "ibpm diagram",
+                        "view":         "node.diagram.svg",
+                        "icon":         "diagram.png",
+                        "mayBeRoot" : true,
+                        "hide" : true,
+                        "roles":                [],
+                        "propertyPackages" : [ "baseattributes", "variableattributes" ]
+                   },{
+					    "type" : "node",
+					    "id" : "StartNoneEvent",
+					    "title" : "开始节点",
+					    "description" : "开始节点",
+					    "view" : "startevent/none.svg",
+					    "icon" : "startevent/none.png",
+					    "propertyPackages" : [ "baseattributes" ],
+					    "roles" : ["sequence_start", "StartEventsMorph","Startevents_all","all" ]
+					  },{
+					    "type" : "node",
+					    "id" : "UserTask",
+					    "title" : "人工节点",
+					    "description" : "人工节点",
+					    "view" : "activity/usertask.svg",
+					    "icon" : "activity/list/type.user.png",
+					    "propertyPackages" : [ "baseattributes", "humanattributes", "humanextattributes" ],
+					    "roles" : ["sequence_start","sequence_end", "ActivitiesMorph","all" ]
+					  }, {
+					    "type" : "node",
+					    "id" : "ServiceTask",
+					    "title" : "自动节点",
+					    "description" : "自动节点",
+					    "view" : "activity/servicetask.svg",
+					    "icon" : "activity/list/type.service.png",
+					    "propertyPackages" : [ "baseattributes", "serverextattributes" ],
+					    "roles" : [ "sequence_start", "Activity", "sequence_end", "ActivitiesMorph", "all" ]
+					  }, {
+					    "type" : "node",
+					    "id" : "ScriptTask",
+					    "title" : "全局节点",
+					    "description" : "全局节点",
+					    "view" : "activity/scripttask.svg",
+					    "icon" : "activity/list/type.script.png",
+					    "propertyPackages" : [ "baseattributes", "globalextattributes" ],
+					    "roles" : [ "sequence_start", "Activity", "sequence_end", "ActivitiesMorph", "all" ]
+					  },{
+					    "type" : "edge",
+					    "id" : "SequenceFlow",
+					    "title" : "连线",
+					    "description" : "连线",
+					    "view" : "connector/sequenceflow.svg",
+					    "icon" : "connector/sequenceflow.png",
+					    //"groups" : [ "线条" ],
+					    "layout" : [ {
+					      "type" : "layout.bpmn2_0.sequenceflow"
+					    } ],
+					    "propertyPackages" : [ "baseattributes", "sequenceflowbase" ],
+					   "roles" : [ "ConnectingObjectsMorph", "all" ]
+					  }
+        ],
+         "rules":{
+                  "containmentRules" : [ {
+                                               "role" : "Diagram",
+                                               "contains" : [ "all" ]
+                                          }
+                                        ],
+                  "connectionRules" : [ {
+										      "role" : "SequenceFlow",
+										      "connects" : 
+										       [ 
+										        {
+										        "from" : "sequence_start",
+										        "to" : [ "sequence_end" ]
+										        } 
+										      ]
+                                            } 
+                                        ],
+	             "morphingRules" : [ 
+									    {
+									      "role" : "StartEventsMorph",
+									      "baseMorphs" : [ "StartNoneEvent" ]
+									    },{
+									      "role" : "ActivitiesMorph",
+									      "baseMorphs" : [ "UserTask" ],
+									      "preserveBounds" : true
+									    }, {
+									      "role" : "EndEventsMorph",
+									      "baseMorphs" : [ "StartNoneEvent" ]
+									    }
+								   ]
+                 ,"cardinalityRules" : [ {
+										      "role" : "Startevents_all",
+										      "incomingEdges" : [ {
+										        "role" : "SequenceFlow",
+										        "maximum" : 0
+										      } ]
+										    }, {
+										      "role" : "Endevents_all",
+										      "outgoingEdges" : [ {
+										        "role" : "SequenceFlow",
+										        "maximum" : 0
+										      } ]
+                                          } ]
+    }
+}
